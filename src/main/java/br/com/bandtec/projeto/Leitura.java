@@ -389,8 +389,7 @@ public class Leitura extends javax.swing.JFrame {
                 
         contadorMem++;
         
-        Double dsorteadoMem = nsorteadoMem.doubleValue();   
-        numeroMediaMem += dsorteadoMem;
+        numeroMediaMem += nsorteadoMem;
         Double mediaTotalMem = numeroMediaMem / contadorMem;
         String nmediaMemText = mediaTotalMem.toString();
         lblRMediaMem.setText(String.format("%.2f", mediaTotalMem));
