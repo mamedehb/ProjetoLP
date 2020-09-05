@@ -8,6 +8,10 @@ import java.util.Random;
  */
 public class Leitura extends javax.swing.JFrame {
 
+    Integer contadorCPU = 0;
+    Integer contadorDisco = 0;
+    Integer contadorMem = 0;
+    
     Double numeroMediaCPU = 0.0;
     Integer numeroMaxCPU = 0;
     Integer numeroMinCPU = 100;
@@ -20,7 +24,6 @@ public class Leitura extends javax.swing.JFrame {
     Integer numeroMaxMem = 0;
     Integer numeroMinMem = 100;
     
-    Double contador = 0.0;
     
     public Leitura() {
         initComponents();
@@ -170,7 +173,6 @@ public class Leitura extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(109, 109, 109)
                                 .addComponent(lblDisco))
-                            .addComponent(prgDisco, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(35, 35, 35)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -189,36 +191,38 @@ public class Leitura extends javax.swing.JFrame {
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(lblMaxDisco)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(lblRMaxDisco)))))
-                        .addGap(59, 59, 59)
+                                        .addComponent(lblRMaxDisco))))
+                            .addComponent(prgDisco, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(125, 125, 125)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(lblMemoria)
+                                        .addGap(135, 135, 135))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(lblMinMem)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(lblRMinMem))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(lblMediaMem)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(lblRMediaMem))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(lblMaxMem)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(lblRMaxMem))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(lblLeituraMem)
+                                                .addGap(32, 32, 32)
+                                                .addComponent(lblNSorteadoMem)))
+                                        .addGap(109, 109, 109))))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(prgMem, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(33, 33, 33))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(lblMemoria)
-                                .addGap(142, 142, 142))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addComponent(lblLeituraMem)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(lblNSorteadoMem)
-                                    .addGap(129, 129, 129))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(lblMinMem)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(lblRMinMem))
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(lblMediaMem)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(lblRMediaMem))
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(lblMaxMem)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(lblRMaxMem)))
-                                    .addGap(109, 109, 109)))))))
+                                .addGap(31, 31, 31))))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -228,12 +232,57 @@ public class Leitura extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(46, 46, 46)
-                                .addComponent(prgMem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(lblMemoria)
-                                .addComponent(lblCPU)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGap(43, 43, 43)
+                                .addComponent(prgCPU, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(lblLeituraCPU)
+                                    .addComponent(lblNSorteadoCPU))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(lblMaxCPU)
+                                    .addComponent(lblRMaxCPU))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(lblMinCPU)
+                                    .addComponent(lblRMinCPU))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(lblMediaCPU)
+                                    .addComponent(lblRMediaCPU)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(lblDisco)
+                                            .addComponent(lblMemoria))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(prgDisco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addGap(0, 0, Short.MAX_VALUE)
+                                        .addComponent(prgMem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(9, 9, 9)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(lblLeituraDisco)
+                                    .addComponent(lblNSorteadoDisco))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(lblMaxDisco)
+                                    .addComponent(lblRMaxDisco))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(lblMinDisco)
+                                    .addComponent(lblRMinDisco))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(lblMediaDisco)
+                                    .addComponent(lblRMediaDisco))))
+                        .addGap(85, 85, 85)
+                        .addComponent(btnLeitura))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblCPU)
+                        .addGap(60, 60, 60)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblLeituraMem)
                             .addComponent(lblNSorteadoMem))
@@ -248,50 +297,7 @@ public class Leitura extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblMediaMem)
-                            .addComponent(lblRMediaMem)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(43, 43, 43)
-                        .addComponent(prgCPU, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblLeituraCPU)
-                            .addComponent(lblNSorteadoCPU))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblMaxCPU)
-                            .addComponent(lblRMaxCPU))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblMinCPU)
-                            .addComponent(lblRMinCPU))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblMediaCPU)
-                            .addComponent(lblRMediaCPU)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(46, 46, 46)
-                                .addComponent(prgDisco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(lblDisco))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblLeituraDisco)
-                            .addComponent(lblNSorteadoDisco))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblMaxDisco)
-                            .addComponent(lblRMaxDisco))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblMinDisco)
-                            .addComponent(lblRMinDisco))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblMediaDisco)
-                            .addComponent(lblRMediaDisco))))
-                .addGap(85, 85, 85)
-                .addComponent(btnLeitura)
+                            .addComponent(lblRMediaMem))))
                 .addContainerGap(203, Short.MAX_VALUE))
         );
 
@@ -321,15 +327,13 @@ public class Leitura extends javax.swing.JFrame {
             lblRMinCPU.setText(nminCPUText);
         }
                 
-        contador++;
+        contadorCPU++;
         
-        Double dsorteadoCPU = nsorteadoCPU.doubleValue();   
-        numeroMediaCPU += dsorteadoCPU;
-        Double mediaTotalCPU = numeroMediaCPU / contador;
+        numeroMediaCPU += nsorteadoCPU;
+        Double mediaTotalCPU = numeroMediaCPU / contadorCPU;
         String nmediaCPUText = mediaTotalCPU.toString();
         lblRMediaCPU.setText(String.format("%.2f", mediaTotalCPU));
-                
-                
+
         
         
         prgDisco.setStringPainted(true);
@@ -353,11 +357,10 @@ public class Leitura extends javax.swing.JFrame {
             lblRMinDisco.setText(nminDiscoText);
         }
                 
-        contador++;
+        contadorDisco++;
         
-        Double dsorteadoDisco = nsorteadoDisco.doubleValue();   
-        numeroMediaDisco += dsorteadoDisco;
-        Double mediaTotalDisco = numeroMediaDisco / contador;
+        numeroMediaDisco += nsorteadoDisco;
+        Double mediaTotalDisco = numeroMediaDisco / contadorDisco;
         String nmediaDiscoText = mediaTotalDisco.toString();
         lblRMediaDisco.setText(String.format("%.2f", mediaTotalDisco));
         
@@ -384,11 +387,11 @@ public class Leitura extends javax.swing.JFrame {
             lblRMinMem.setText(nminMemText);
         }
                 
-        contador++;
+        contadorMem++;
         
         Double dsorteadoMem = nsorteadoMem.doubleValue();   
         numeroMediaMem += dsorteadoMem;
-        Double mediaTotalMem = numeroMediaMem / contador;
+        Double mediaTotalMem = numeroMediaMem / contadorMem;
         String nmediaMemText = mediaTotalMem.toString();
         lblRMediaMem.setText(String.format("%.2f", mediaTotalMem));
         
